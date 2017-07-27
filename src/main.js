@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 //The method will return product list
 app.get('/', function (req, res) {
   res.render('layout', {
-    content: ReactDOMServer.renderToString(<HelloWorld />)
+    content: ReactDOMServer.renderToString(<ViewProduct />)
   });
 });
 
