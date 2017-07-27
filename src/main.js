@@ -2,7 +2,14 @@ var appRoot = require('app-root-path');
 var express = require('express');
 var app = express();
 var fs = require("fs");
+app.set('view engine', 'ejs');
 //The method will return product list
+app.get('/', function (req, res) {
+  res.render('layout', {
+    content: ReactDOMServer.renderToString(<HelloWorld />)
+  });
+});
+
 app.get('/listProduct', function (req, res) {
    fs.readFile( appRoot.path + "/data/" + "productdata.json", 'utf8', function (err, data) {
        res.end( data );
