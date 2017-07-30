@@ -1,6 +1,33 @@
 import React from 'react';
 
 class App extends React.Component {
+   constructor(){
+    super();
+    this.state={
+        data:
+        [
+            { 
+                "id":1,
+                "name":"Bhavin",
+                "age":"30"
+
+            },
+            {
+                "id":2,
+                "name":"Tejas",
+                "age":"25"
+            },
+            {
+                "id":3,
+                "name":"Vishal",
+                "age":"32"
+            }
+
+        ]
+
+        
+    }
+   }
    render() {
        var i=1;
 
@@ -22,12 +49,12 @@ class App extends React.Component {
 
 
              */}
-            <h1>Header</h1>
-           
-            <h2 style={myStyle}>Content</h2>
-            <p data-myattribute="xyz">This is the content!!!</p>
-            <h1>{i==1 ? 'True': 'False'} </h1>
             <Header/>
+            <table>
+                <tbody>
+                    {this.state.data.map((person,i)=><TableRow key={i} data={person}/>)}
+                </tbody>
+            </table>
          </div>
       );
    }
@@ -36,22 +63,23 @@ class Header extends React.Component {
    render() {
       return (
          <div>
-            <h1>Header Text</h1>
+            <h1>Header</h1>
          </div>
       );
    }
 }
+class TableRow extends React.Component{
 
-class Content extends React.Component {
-   render() {
-      return (
-         <div>
-            <h2>Content</h2>
-            <p>The content text!!!</p>
-         </div>
-      );
-   }
+    render(){
+        return(
+            <tr>
+                <td>{this.props.data.id}</td>
+                <td>{this.props.data.name}</td>
+                <td>{this.props.data.age}</td>
+            </tr>
+        );
+
+    }
 }
-
 
 export default App;
